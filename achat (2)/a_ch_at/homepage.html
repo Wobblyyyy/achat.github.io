@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <title>homepage</title>
+
+    <link rel="stylesheet" href="css/homepage.css">
+
+    <link rel="icon" type="image/png" href="../favicon-96x96.png">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="../favicon-96x96.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>
+
+    <style>
+        body,
+        html {
+            height: 100%;
+            line-height: 1.8;
+            scroll-behavior: smooth;
+            /* filter: blur(2px); */
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="mainpage">
+
+        <div>
+            <div style="height:7vh;" id="myNavbar">
+                <!-- Right-sided navbar links -->
+                <div>
+                  <div class="dropdown" style="margin-left:70vw;width:15vw;position:absolute;height:5vh;">
+                    <button style="height:7vh;width:15vw;" class=" w3-button"><i class="fa fa-sign-in"></i> group options</button>
+                    <div class="dropdown-content" style="width:15vw;">
+                      <button style="width:15vw;" id="leavegroup" class="w3-bar-item w3-button"><i class="fa fa-sign-in"></i> leave group</button><br>
+                      <button style="width:15vw;" id="opengroupmenu" class="w3-bar-item w3-button"><i class="fa fa-gears"></i> change name</button><br>
+                      <button style="width:15vw;" id="btn" class="w3-bar-item w3-button"></i><i class="fa fa-wrench"></i> group settings</button>
+                    </div>
+                  </div>
+                  <div class="dropdown" style="margin-left:85vw;width:15vw;position:absolute;height:5vh;">
+                    <button style="height:7vh;width:15vw;" class=" w3-button"><i class="fa fa-users"></i> account</button>
+                    <div class="dropdown-content" style="width:15vw;">
+                      <button style="width:15vw;" id="shop" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> shop</button><br>
+                      <button style="width:15vw;" id="signout" class="w3-bar-item w3-button"><i class="fa fa-sign-out"></i> sign out</button><br>
+                      <button style="width:15vw;" id="openoptions" class="w3-bar-item w3-button"><i class="fa fa-gear"></i> options</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="sidebar" style="height:93vh;width:29vw;margin-left:0.3vw;position:absolute;">
+            <div class="convo" id="newgroupmenu"><i class="fa fa-plus-square" aria-hidden="true"></i> new group</div>
+            <div id="grouplist">
+            </div>
+        </div>
+
+        <div id="mainchatbox">
+          
+        </div>
+
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content" id="groupModal">
+                <input placeholder="group name" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" type="text" id="newgroupname">
+                <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="wellFuck">change group name</button>
+            </div>
+            <div class="modal-content" id="primaryModal">
+                <span class="close">&times;</span>
+                <div id="newgroup">
+                    <input placeholder="group name" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" type="text" id="groupname">
+                    <input value="address-book" placeholder="group icon" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" type="text" id="groupicon">
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top"><i id="iconpreview" class="fa fa-lg fa-address-book" aria-hidden="true"></i></button>
+                    <a href="https://fontawesome.com/v4.7.0/icons/" target="_blank">click here for a list of all icons</a>
+                    <br>
+                    <input placeholder="enter username..." class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" type="text" id="nameselector">
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="addtogroup">add to group</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="removefromgroup">remove from group</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="creategroup">create group</button>
+                    <p id="currentnamelist"></p>
+                </div>
+                <div id="info">
+                    <p id="groupId"></p>
+                    <p id="groupName"></p>
+                    <p id="groupMembers"></p>
+                </div>
+                <input placeholder="enter username..." class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" type="text" id="inputbox">
+                <div id="init">
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="submit">submit</button>
+                </div>
+                <div id="mainsplash">
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="submitnames">add to group</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="removename">remove from group</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="changerank">change rank</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off goback">go back</button>
+                </div>
+                <div id="rankmenu">
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="member">member</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="moderator">moderator</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="admin">admin</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="owner">owner</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off goback">go back</button>
+                </div>
+                <div id="leaveprompt">
+                    <h3>are you sure?</h3>
+                    <p>after you leave a group, you might not be able to join it again.</p>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" style="color:red;" id="confirmleave">confirm leave</button>
+                </div>
+                <div id="status">
+                    <h3>status update</h3>
+                    <p id="updatestatus"></p>
+                </div>
+                <div id="errormsg">
+                    <h3>error</h3>
+                    <p>your rank in this group is not high enough to allow you to do that.</p>
+                </div>
+                <p></p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="optionspage">
+        <div id="options_sidebar" style="width:14vw;height:100vh;margin-left:0.3vw;margin-top:1vh;">
+
+            <div id="sidebarcontents" style="position:absolute;">
+
+                <div id="account" style="width:14vw;height:7vh;" class="convo">account</div>
+
+                <div id="chat" style="width:14vw;height:7vh;" class="convo darkbox">chat</div>
+
+                <div id="extensions" style="width:14vw;height:7vh;" class="convo">extensions</div>
+
+                <div id="goback" style="width:14vw;height:7vh;" class="convo">go back</div>
+
+            </div>
+
+            <div id="options_mainpage" style="width:85vw;height:100vh;margin-left:15vw;position:absolute;">
+
+                <div id="options_account">
+                </div>
+
+                <div id="options_chat">
+                    <h1>chat color</h1>
+                    <p>
+                      select your username color from a list of all of your available colors. <br>
+                      your current equipped color is <i id="color_current">black</i>
+                    </p>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="cc_black">black</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="cc_blue">blue</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="cc_green">green</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="cc_red">red</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="cc_orange">orange</button>
+                    <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id="cc_purple">purple</button>
+                </div>
+
+                <div id="options_extensions">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="shoppage">
+      
+
+
+
+
+
+
+
+
+
+<body>
+
+    <div id="mainscreen">
+
+        <!-- About Section -->
+        <div class="w3-container" style="padding:128px 16px" id="features">
+            <h3 class="w3-center">name colors</h3>
+            <p class="w3-center w3-large">change your name to some new sexy color</p>
+            <h1 class="w3-center">current balance: <b id="currentBalance">0 <i class="fa fa-usd"></i></b></h1>
+            <div class="w3-row-padding w3-center" style="margin-top:64px">
+                <div class="w3-quarter">
+                    <i class="fa fa-sticky-note-o w3-margin-bottom w3-jumbo w3-center"></i>
+                    <p class="w3-large">blue name color</p>
+                    <p>buy the permission to change your name color to blue</p>
+                    <button id="blue" class="w3-button w3-light-grey w3-block">3,000 <i class="fa fa-usd"></i></button>
+                </div>
+                <div class="w3-quarter">
+                    <i class="fa fa-sticky-note-o w3-margin-bottom w3-jumbo w3-center"></i>
+                    <p class="w3-large">green name color</p>
+                    <p>buy the permission to change your name color to green</p>
+                    <button id="green" class="w3-button w3-light-grey w3-block">3,500 <i class="fa fa-usd"></i></button>
+                </div>
+                <div class="w3-quarter">
+                    <i class="fa fa-sticky-note-o w3-margin-bottom w3-jumbo w3-center"></i>
+                    <p class="w3-large">red name color</p>
+                    <p>buy the permission to change your name color to red</p>
+                    <button id="red" class="w3-button w3-light-grey w3-block">5,000 <i class="fa fa-usd"></i></button>
+                </div>
+                <div class="w3-quarter">
+                    <i class="fa fa-sticky-note-o w3-margin-bottom w3-jumbo w3-center"></i>
+                    <p class="w3-large">orange name color</p>
+                    <p>buy the permission to change your name color to orange</p>
+                    <button id="orange" class="w3-button w3-light-grey w3-block">9,000 <i class="fa fa-usd"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="w3-center w3-black w3-padding-64">
+            <button id="closeshop" class="w3-button w3-light-grey">return home</button>
+            <div class="w3-xlarge w3-section">
+                <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                <i class="fa fa-instagram w3-hover-opacity"></i>
+                <i class="fa fa-snapchat w3-hover-opacity"></i>
+                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                <i class="fa fa-twitter w3-hover-opacity"></i>
+                <i class="fa fa-linkedin w3-hover-opacity"></i>
+            </div>
+        </footer>
+    </div>
+
+    <div id="errorscreen">
+      <h1 class="w3-center" style="color:red;">error completing purchase</h1>
+      <h3 id="errormsg" class="w3-center"></h3>
+      <button id="hideerrorscreen" style="margin-left:42.5vw;width:15vw;" class="w3-centered w3-button w3-light-grey w3-block">go back to shop</button>
+    </div>
+
+    <div id="purchased">
+      <h1 class="w3-center" style="color:green;">purchase completed!</h1>
+      <h3 id="purchasedmsg" class="w3-center"></h3>
+      <button id="hidepurchasedscreen" style="margin-left:42.5vw;width:15vw;" class="w3-centered w3-button w3-light-grey w3-block">go back to shop</button>
+    </div>
+
+    <script src="script/shop.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyDkIPxli9HepurbKlBRLvsipoZpiN1e9ds",
+            authDomain: "skielines-992a0.firebaseapp.com",
+            databaseURL: "https://skielines-992a0.firebaseio.com",
+            projectId: "skielines-992a0",
+            storageBucket: "skielines-992a0.appspot.com",
+            messagingSenderId: "270260186833"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://wobblyyyy.github.io/achat.github.io/new_homepage.js"></script>
+
+</body>
+
+</html>

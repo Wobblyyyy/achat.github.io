@@ -1,0 +1,16 @@
+body
+{
+
+  padding-left: 5vw;
+  padding-top: 5vh;
+
+}
+
+textarea
+{
+
+  width: 50vw;
+  height: 50vh;
+  resize: none;
+  
+}

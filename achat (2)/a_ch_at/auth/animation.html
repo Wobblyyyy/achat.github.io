@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <style>
+      @keyframes white
+      {
+        from { transform: none; opacity: 0; }
+        to { transform: scale(0.5); opacity: 1; }
+      }
+      @keyframes dots
+      {
+        0% { top: 0vh; left: 0vh; }
+        25% { top: 0vh; left: 20vh; }
+        50% { top: 20vh; left: 20vh; }
+        75% { top: 20vh; left: 0%; }
+        100% { top: 0vh; left: 0vh; }
+      }
+      .dot
+      {
+        height: 10vh;
+        width: 10vh;
+        background-color: black;
+        border-radius: 50%;
+        position: absolute;
+        animation-name: dots;
+        animation-iteration-count: infinite;
+        animation-duration: 3s;
+      }
+      .dot1
+      {
+        animation-delay: -1s;
+      }
+      .dot2
+      {
+        animation-delay: -2s;
+      }
+      .dot3
+      {
+        animation-delay: -3s;
+      }
+      .loader
+      {
+        height: 40vh;
+        width: 40vh;
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        margin-top: -20vh;
+        margin-left: -20vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loader">
+      <div class="dot1 dot">
+      <div class="dot1 dot"></div>
+      <div class="dot2 dot"></div>
+      <div class="dot3 dot"></div>
+      </div>
+      <div class="dot2 dot">
+      <div class="dot1 dot"></div>
+      <div class="dot2 dot"></div>
+      <div class="dot3 dot"></div>
+      </div>
+      <div class="dot3 dot">
+      <div class="dot1 dot"></div>
+      <div class="dot2 dot"></div>
+      <div class="dot3 dot"></div>
+      </div>
+    </div>
+  </body>
+</html>

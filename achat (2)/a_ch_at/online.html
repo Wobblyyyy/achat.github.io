@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>a_ch_at</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/online.css" rel="stylesheet" type="text/css" />
+	<style>
+		.tooltip {
+			position: relative;
+			display: inline-block;
+			border-bottom: 1px dotted black;
+		}
+
+		.tooltip .tooltiptext {
+			visibility: hidden;
+			width: 120px;
+			background-color: black;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 5px 0;
+			position: absolute;
+			z-index: 1;
+			bottom: 100%;
+			left: 50%;
+			margin-left: -60px;
+
+			/* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+			opacity: 0;
+			transition: opacity 1s;
+		}
+
+		.tooltip:hover .tooltiptext {
+			visibility: visible;
+			opacity: 1;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+	</script>
+</head>
+
+<body class="noPadding clearBg" onload="updateOnline(true)" onunload="updateOnline(false)">
+	<ul id="body">
+	</ul>
+	<script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js">
+	</script>
+	<script>
+		var config = { apiKey: "AIzaSyDkIPxli9HepurbKlBRLvsipoZpiN1e9ds", authDomain: "skielines-992a0.firebaseapp.com", databaseURL: "https://skielines-992a0.firebaseio.com", projectId: "skielines-992a0", storageBucket: "skielines-992a0.appspot.com", messagingSenderId: "270260186833" }; firebase.initializeApp(config);
+	</script>
+	<script>
+		function updateOnline(status) {
+
+        // Update the online indicator
+        var conversation = new URL(window.location.href).searchParams.get("c");
+        var username = new URL(window.location.href).searchParams.get("u");
+
+        if (status == true) {
+
+          // User has loaded the page
+          firebase.database().ref("conversations/" + conversation + "/online/" + username).set("online");
+          printOnline(conversation, username);
+
+        } else {
+
+          // User has unloaded the page
+          firebase.database().ref("conversations/" + conversation + "/online/" + username).remove();
+
+        }
+
+      }
+
+      function printOnline(conversation, username) {
+
+        firebase.database().ref("conversations/" + conversation + "/online/").on("value", function(snapshot) {
+          
+          document.getElementById("body").innerHTML = "";
+          snapshot.forEach(function(child) {
+
+            var nodeText = document.createElement("P");
+            nodeText.innerHTML = child.key;
+
+            switch (child.val()) {
+
+              case "online":
+
+                nodeText.setAttribute("class", "textGray");
+
+                break;
+
+              case "active":
+
+                nodeText.setAttribute("class", "textGray textBold");
+
+                break;
+
+              case "typing":
+
+                nodeText.setAttribute("class", "textGray textItalic");
+
+                break;
+
+              default:
+
+                break;
+
+            }
+
+            if (child.key == "null" || child.key == "undefined") {
+
+              // don't print.
+
+            } else {
+
+              document.getElementById("body").appendChild(nodeText);
+
+            }
+
+          });
+
+        });
+
+      }
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<title>a_ch_at</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" 
+      type="image/png" 
+      href="../../favicon-96x96.png">
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Raleway", sans-serif
+    }
+    
+    body,
+    html {
+        height: 100%;
+        line-height: 1.8;
+        scroll-behavior: smooth;
+        /* filter: blur(2px); */
+    }
+    
+    body {
+        opacity: 1;
+        transition: 1s opacity;
+    }
+    
+    body.fade-out {
+        opacity: 0;
+        transition: none;
+    }
+    /* Full height image header */
+    
+    .bgimg-1 {
+        background-position: center;
+        background-size: cover;
+        background-image: url("image.jpg");
+        min-height: 100%;
+    }
+    
+    .w3-bar .w3-button {
+        padding: 16px;
+    }
+</style>
+
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-card" id="myNavbar">
+            <button id="homebtn" href="#home" class="w3-bar-item w3-button w3-wide">home</button>
+            <!-- Right-sided navbar links -->
+            <div class="w3-right w3-hide-small">
+                <a onclick="setTimeout(function(){ window.location.href='../index.html#about'; }, 1000);" class="w3-bar-item w3-button"><i class="fa fa-question-circle"></i> about</a>
+                <a onclick="setTimeout(function(){ window.location.href='../index.html#development'; }, 1000);" class="w3-bar-item w3-button"><i class="fa fa-wrench"></i> development</a>
+                <a onclick="setTimeout(function(){ window.location.href='login2.html'; }, 1000);" class="w3-bar-item w3-button"><i class="fa fa-sign-in"></i> signin</a>
+                <a onclick="setTimeout(function(){ window.location.href='register2.html'; }, 1000);" class="w3-bar-item w3-button"><i class="fa fa-user-plus"></i> signup</a>
+                <a onclick="setTimeout(function(){ window.location.href='../index.html#contact'; }, 1000);" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> feedback</a>
+            </div>
+            <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Sidebar on small screens when clicking the menu icon -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+        <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
+        <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
+        <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
+        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    </nav>
+
+    <!-- Header with full-height image -->
+    <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+        <div class="w3-display-left w3-text-white" style="padding:48px">
+            <span class="w3-jumbo w3-hide-small">a_ch_at <i class="fa fa-comment"></i> create a new account</span>
+            <br>
+            <span class="w3-xxlarge w3-hide-large w3-hide-medium">a_ch_at <i class="fa fa-comment"> create a new account</i></span>
+            <br>
+            <span class="w3-large">please sign up im lonely</span>
+            <p>
+                <!--<a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">learn more</a>
+       <button id="signup" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">create an account</button> <p>-->
+                <input id="email" placeholder="email" style="width:25vw;" type="text" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">
+                <p>
+                    <input id="username" placeholder="username" style="width:25vw;" type="text" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">
+                    <p>
+                        <input id="password1" placeholder="password" style="width:25vw;" type="password" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">
+                        <p>
+                            <input id="password2" placeholder="confirm password" style="width:25vw;" type="password" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">
+                            <p>
+                                <button id="signup" style="width:25vw;" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" onclick="checkUsername()">submit</button>
+        </div>
+        <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+        </div>
+    </header>
+
+    <script>
+        $("#signin").click(function() {
+            $("body").fadeOut(1000);
+            $("html").fadeOut(1000);
+        });
+        $("#signup").click(function() {
+            $("body").fadeOut(1000);
+            $("html").fadeOut(1000);
+        });
+
+        $(window).on("load", function() {
+            $('body').removeClass('fade-out');
+        });
+        $("#homebtn").click(function() {
+          $("body").fadeOut(1000);
+          $("html").fadeOut(1000);
+          window.location.href = "../index.html";
+        });
+    </script>
+    <script>
+        document.body.className += ' fade-out';
+    </script>
+    <script src="sha256.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyDkIPxli9HepurbKlBRLvsipoZpiN1e9ds",
+            authDomain: "skielines-992a0.firebaseapp.com",
+            databaseURL: "https://skielines-992a0.firebaseio.com",
+            projectId: "skielines-992a0",
+            storageBucket: "skielines-992a0.appspot.com",
+            messagingSenderId: "270260186833"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script>
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              firebase.database().ref('uid-to-name/' + firebase.auth().currentUser.uid).set({
+              username: document.getElementById("username").value
+            });
+            window.location.href = "../homepage.html";
+            }
+        });
+
+        var database = firebase.database();
+
+        function checkUsername() {
+            firebase.database().ref('users').once('value', function(snapshot) {
+                if (snapshot.hasChild(document.getElementById("username").value)) {
+                    // username already exists n i b b a
+                    alert('username already taken');
+                } else {
+                    // good to go have fun
+                    createNewAccount();
+                }
+            });
+        }
+
+        function writeUserData() {
+            var email = document.getElementById("email").value;
+            var username = document.getElementById("username").value;
+            var password1 = document.getElementById("password1").value;
+            var password2 = document.getElementById("password2").value;
+
+            email = email.replace("@", "nobodywilleverusethesewords");
+            email = email.replace(".", "evenfewerpeoplewillusethesewords");
+
+            firebase.database().ref('email-to-name/' + email).set({
+                username: username
+            });
+            firebase.database().ref('name-to-email/' + username).set({
+                email: email
+            });
+            return firebase.database().ref('users/count').once('value').then(function(snapshot) {
+                console.log(snapshot.val());
+                var nextId = snapshot.val() + 1;
+                console.log(nextId);
+                firebase.database().ref('users/count').set(nextId);
+                firebase.database().ref('users/' + username).set({
+                    id: nextId,
+                    color: 6,
+                    tokens: 0
+                });
+                firebase.database().ref('uid-to-name/' + firebase.auth().currentUser.uid).set({
+                        username: username
+                    });
+            }); // hey how's it going
+        }
+
+        function createNewAccount() {
+            var email = document.getElementById("email").value;
+            var username = document.getElementById("username").value;
+            var password1 = document.getElementById("password1").value;
+            var password2 = document.getElementById("password2").value;
+
+            firebase.database().ref("master/users/" + username + "/global").set("member");
+
+            // create new account function here
+            // first input the values we'll need later for private messages
+            // next we'll do the fuckin firebase auth shit
+            // okay that's it i'll stop commenting now
+
+            if (password1 == password2) {
+
+                // create custom user shit
+
+                writeUserData();
+
+                // do firebase stuff now that we're done
+                password1 = sha256(password1); // sha256 the password for coolness
+                firebase.auth().createUserWithEmailAndPassword(email, password1).catch(function(error) { // firebase shit that should work
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(errorCode, errorMessage);
+                });
+
+            }
+        }
+
+        !function(){try{var o=console;Object.defineProperty(window,"console",{get:function(){if(o._commandLineAPI)throw"Sorry, for security reasons, the script console is deactivated on netflix.com";return o},set:function(e){o=e}})}catch(o){}}();
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<title>a_ch_at</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+</script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/png" href="../favicon-96x96.png">
+<style>
+    #loader {
+        display: none;
+        height: 40vh;
+        width: 40vh;
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        margin-top: -20vh;
+        margin-left: -20vh;
+    }
+</style>
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Raleway", sans-serif
+    }
+    
+    body,
+    html {
+        height: 100%;
+        line-height: 1.8;
+        scroll-behavior: smooth;
+        /* filter: blur(2px); */
+    }
+    /* Full height image header */
+    
+    .w3-bar .w3-button {
+        padding: 16px;
+    }
+    
+    #main {
+        height: 100vh;
+        width: 100vw;
+        display: block;
+    }
+</style>
+
+<body>
+
+    <div id="mainscreen">
+
+        <!-- About Section -->
+        <div class="w3-container" style="padding:128px 16px" id="features">
+            <h3 class="w3-center">name colors</h3>
+            <p class="w3-center w3-large">change your name to some new sexy color</p>
+            <h1 class="w3-center">current balance: <b id="currentBalance">0 <i class="fa fa-usd"></i></b></h1>
+            <div class="w3-row-padding w3-center" style="margin-top:64px">
+                <div class="w3-quarter">
+                    <i class="fa fa-sticky-note-o w3-margin-bottom w3-jumbo w3-center"></i>
+                    <p class="w3-large">blue name color</p>
+                    <p>buy the permission to change your name color to blue</p>
+                    <button id="blue" class="w3-button w3-light-grey w3-block">3,000 <i class="fa fa-usd"></i></button>
+                </div>
+                <div class="w3-quarter">
+                    <i class="fa fa-sticky-note-o w3-margin-bottom w3-jumbo w3-center"></i>
+                    <p class="w3-large">green name color</p>
+                    <p>buy the permission to change your name color to green</p>
+                    <button id="green" class="w3-button w3-light-grey w3-block">3,500 <i class="fa fa-usd"></i></button>
+                </div>
+                <div class="w3-quarter">
+                    <i class="fa fa-sticky-note-o w3-margin-bottom w3-jumbo w3-center"></i>
+                    <p class="w3-large">red name color</p>
+                    <p>buy the permission to change your name color to red</p>
+                    <button id="red" class="w3-button w3-light-grey w3-block">5,000 <i class="fa fa-usd"></i></button>
+                </div>
+                <div class="w3-quarter">
+                    <i class="fa fa-sticky-note-o w3-margin-bottom w3-jumbo w3-center"></i>
+                    <p class="w3-large">orange name color</p>
+                    <p>buy the permission to change your name color to orange</p>
+                    <button id="orange" class="w3-button w3-light-grey w3-block">9,000 <i class="fa fa-usd"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="w3-center w3-black w3-padding-64">
+            <a href="homepage.html" class="w3-button w3-light-grey">return home</a>
+            <div class="w3-xlarge w3-section">
+                <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                <i class="fa fa-instagram w3-hover-opacity"></i>
+                <i class="fa fa-snapchat w3-hover-opacity"></i>
+                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                <i class="fa fa-twitter w3-hover-opacity"></i>
+                <i class="fa fa-linkedin w3-hover-opacity"></i>
+            </div>
+        </footer>
+    </div>
+
+    <div id="errorscreen">
+      <h1 class="w3-center" style="color:red;">error completing purchase</h1>
+      <h3 id="errormsg" class="w3-center"></h3>
+      <button id="hideerrorscreen" style="margin-left:42.5vw;width:15vw;" class="w3-centered w3-button w3-light-grey w3-block">go back to shop</button>
+    </div>
+
+    <div id="purchased">
+      <h1 class="w3-center" style="color:green;">purchase completed!</h1>
+      <h3 id="purchasedmsg" class="w3-center"></h3>
+      <button id="hidepurchasedscreen" style="margin-left:42.5vw;width:15vw;" class="w3-centered w3-button w3-light-grey w3-block">go back to shop</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyDkIPxli9HepurbKlBRLvsipoZpiN1e9ds",
+            authDomain: "skielines-992a0.firebaseapp.com",
+            databaseURL: "https://skielines-992a0.firebaseio.com",
+            projectId: "skielines-992a0",
+            storageBucket: "skielines-992a0.appspot.com",
+            messagingSenderId: "270260186833"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="script/shop.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+</body>
+
+</html>

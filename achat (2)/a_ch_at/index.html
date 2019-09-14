@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<title>a_ch_at</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+
+</script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/png" href="../favicon-96x96.png">
+<style>
+	@keyframes white {
+		from {
+			transform: none;
+			opacity: 0;
+		}
+		to {
+			transform: scale(0.5);
+			opacity: 1;
+		}
+	}
+
+	@keyframes dots {
+		0% {
+			top: 0vh;
+			left: 0vh;
+		}
+		25% {
+			top: 0vh;
+			left: 20vh;
+		}
+		50% {
+			top: 20vh;
+			left: 20vh;
+		}
+		75% {
+			top: 20vh;
+			left: 0%;
+		}
+		100% {
+			top: 0vh;
+			left: 0vh;
+		}
+	}
+
+	.dot {
+		height: 10vh;
+		width: 10vh;
+		background-color: black;
+		border-radius: 50%;
+		position: absolute;
+		animation-name: dots;
+		animation-iteration-count: infinite;
+		animation-duration: 3s;
+	}
+
+	.dot1 {
+		animation-delay: -1s;
+	}
+
+	.dot2 {
+		animation-delay: -2s;
+	}
+
+	.dot3 {
+		animation-delay: -3s;
+	}
+
+	#loader {
+    display: none;
+		height: 40vh;
+		width: 40vh;
+		position: absolute;
+		top: 50vh;
+		left: 50vw;
+		margin-top: -20vh;
+		margin-left: -20vh;
+	}
+</style>
+<style>
+	body,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: "Raleway", sans-serif
+	}
+
+	body,
+	html {
+		height: 100%;
+		line-height: 1.8;
+		scroll-behavior: smooth;
+		/* filter: blur(2px); */
+	}
+
+	/* Full height image header */
+	.bgimg-1 {
+		background-position: center;
+		background-size: cover;
+		background-image: url("index1.jpg");
+		min-height: 100%;
+	}
+
+	.w3-bar .w3-button {
+		padding: 16px;
+	}
+
+	#main {
+		height: 100vh;
+		width: 100vw;
+		display: none;
+	}
+</style>
+
+<body>
+
+	<div id="main">
+
+		<!-- Navbar (sit on top) -->
+		<div class="w3-top">
+			<div class="w3-bar w3-white w3-card" id="myNavbar">
+				<a href="#home" class="w3-bar-item w3-button w3-wide">home</a>
+				<!-- Right-sided navbar links -->
+				<div class="w3-right w3-hide-small">
+					<a href="#about" class="w3-bar-item w3-button"><i class="fa fa-question-circle"></i> about</a>
+      <a href="#development" class="w3-bar-item w3-button"><i class="fa fa-wrench"></i> development</a>
+      <a onclick="doShit()" id="signin" class="w3-bar-item w3-button"><i class="fa fa-sign-in"></i> signin</a>
+      <a onclick="doShit()" id="signup" class="w3-bar-item w3-button"><i class="fa fa-user-plus"></i> signup</a>
+      <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> feedback</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
+  <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
+  <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+</nav>
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">a_ch_at <i class="fa fa-comment"></i></span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">a_ch_at <i class="fa fa-comment"></i></span><br>
+    <span class="w3-large">please sign up im lonely</span>
+    <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">learn more</a>
+       <button id="signup" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">create an account</button>
+  </div> 
+  <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+  </div>
+</header>
+
+<!-- About Section -->
+<div class="w3-container" style="padding:128px 16px" id="features">
+  <h3 class="w3-center">features</h3>
+  <p class="w3-center w3-large">why you should take 3 seconds to go make an account</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-users w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">group chats</p>
+      <p>thicc ass group chats that can be large or small or whatever you want who cares</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-exchange w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">direct messages</p>
+      <p>one-on-one chats with your best buds so you can talk shit about that one friend nobody likes</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-globe w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">global chat</p>
+      <p>giant ass chat so you can talk to eVeRyOnE like the popular person you are</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-question w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">cool random shit</p>
+      <p>depending on how not lazy i am yall might get some stuff like tic tac toe or if you're extra lucky ads</p>
+    </div>
+  </div>
+</div>
+
+<!-- Promo Section "Statistics" -->
+<div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
+  <h3 class="w3-center">a_ch_at stats</h3>
+  <p class="w3-center">random stats about our service</p>
+  <div class="w3-quarter">
+    <span class="counter w3-xxlarge" data-count="0" id="stats-users">0</span>
+    <br>user accounts <i class="fa fa-address-book"></i>
+  </div>
+  <div class="w3-quarter">
+    <span class="counter w3-xxlarge" data-count="0" id="stats-messages" class="w3-xxlarge">0</span>
+    <br>messages sent <i class="fa fa-comment"></i>
+  </div>
+  <div class="w3-quarter">
+    <span id="stats-groups" class="counter w3-xxlarge" data-count="0" class="w3-xxlarge">0</span>
+    <br>group chats created <i class="fa fa-users"></i>
+  </div>
+  <div class="w3-quarter">
+    <span class="counter w3-xxlarge" data-count="0" id="stats-tokens" class="w3-xxlarge">0</span>
+    <br>tokens earned <i class="fa fa-usd"></i>
+  </div>
+</div>
+
+<!-- Team Section -->
+<div class="w3-container" style="padding:128px 16px" id="development">
+  <h3 class="w3-center">development</h3>
+  <p class="w3-center w3-large">people who did stuff yayay</p>
+  <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <!--
+        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
+        -->
+
+        <div class="w3-container">
+          <h3>colin robertson</h3>
+          <p class="w3-opacity">the dude who did all this shit</p>
+          <p>yo yo yo it's colin up in this bitch yeah the only reason this is here is to flex on yall that i made this but yeah anyway that's all go have fun<br><br><br><br></p>
+          <p><button id="button" class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact<br>username: wobblyyyy<br>user ID: #1<br>email: crobertson22@students.roxbury.org</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <div class="w3-container">
+          <h3>want to help out?</h3>
+          <p class="w3-opacity">apply now!</p>
+          <p>you're welcome to join the achat development team if you can bring something useful to the table or if you believe you can make a positive change. some general fields of interest include
+            <ul>
+              <li>javascript development</li>
+              <li>site design</li>
+              <li>good looking CSS or artwork</li>
+            </ul>
+          </p>
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact<br>send us an email at (add email later)</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- about -->
+<div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64" id="about">
+  <h3 class="w3-center"><b>about a_ch_at</b></h3>
+  <p class="w3-center">what we're all about</p>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge" style="opacity:0;">.</span>
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge"><i class="fa fa-lock"></i></span>
+    <br>security and encryption
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge"><i class="fa fa-tachometer"></i></span>
+    <br>speed and reliability
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge" style="opacity:0;">.</span>
+  </div>
+  <br><br><br><br><br>
+  <p class="w3-center">
+    <b>our mission</b> <br>
+    yeah man im not gonna lie the only reason i made this <br>
+    shit is so i could talk to my friends in school <br> <br>
+    <b>what the hell else goes in an about section?</b> <br>
+    alright guys have fun
+  </p>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</footer>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyDkIPxli9HepurbKlBRLvsipoZpiN1e9ds",
+            authDomain: "skielines-992a0.firebaseapp.com",
+            databaseURL: "https://skielines-992a0.firebaseio.com",
+            projectId: "skielines-992a0",
+            storageBucket: "skielines-992a0.appspot.com",
+            messagingSenderId: "270260186833"
+        };
+        firebase.initializeApp(config);
+    </script>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+
+$("#signin").click(function(){
+  $("#main").fadeOut(500);
+  $("#loader").fadeIn(500);
+  setTimeout(function(){ $("#loader").fadeOut(500); }, 1000);
+  setTimeout(function(){ window.location.href = "auth/login2.html"; }, 2000);
+});
+$("#signup").click(function(){
+  $("#main").fadeOut(500);
+  $("#loader").fadeIn(500);
+  setTimeout(function(){ $("#loader").fadeOut(500); }, 1000);
+  setTimeout(function(){ window.location.href = "auth/register2.html"; }, 2000);
+});
+function doShit()
+        {
+          //
+        }
+
+firebase.database().ref('users/count').once('value', (snapshot) =>
+{
+  document.getElementById("stats-users").setAttribute("data-count", snapshot.val());
+});
+firebase.database().ref("users/tokens").once("value", (snapshot) =>
+{
+  document.getElementById("stats-tokens").setAttribute("data-count", snapshot.val());
+});
+firebase.database().ref("master/groupTotal").once("value", (snapshot) =>
+{
+  document.getElementById("stats-groups").setAttribute("data-count", snapshot.val());
+});
+firebase.database().ref('messages').once('value', (snapshot) =>
+{
+  document.getElementById("stats-messages").setAttribute("data-count", snapshot.val());
+
+  $('.counter').each(function() {
+  var $this = $(this),
+      countTo = $this.attr('data-count');
+  
+  $({ countNum: $this.text()}).animate({
+    countNum: countTo
+  },
+
+  {
+
+    duration: 8000,
+    easing:'linear',
+    step: function() {
+      $this.text(Math.floor(this.countNum));
+    },
+    complete: function() {
+      $this.text(this.countNum);
+      //alert('finished');
+    }
+
+  });  
+  
+  
+
+});
+});
+
+$("#main").fadeIn(500);
+
+</script>
+
+      <div id="loader">
+      <div class="dot1 dot">
+      <div class="dot1 dot"></div>
+      <div class="dot2 dot"></div>
+      <div class="dot3 dot"></div>
+      </div>
+      <div class="dot2 dot">
+      <div class="dot1 dot"></div>
+      <div class="dot2 dot"></div>
+      <div class="dot3 dot"></div>
+      </div>
+      <div class="dot3 dot">
+      <div class="dot1 dot"></div>
+      <div class="dot2 dot"></div>
+      <div class="dot3 dot"></div>
+      </div>
+      </div>
+
+</body>
+</html>

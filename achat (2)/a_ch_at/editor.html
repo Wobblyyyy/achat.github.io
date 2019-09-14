@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>script editor</title>
+	<style type="text/css" media="screen">
+		.btn {
+			outline: none;
+			border: none;
+			background-color: #3b3b3b;
+			color: white;
+			border-radius: 3px;
+			transition: background-color 0.7s;
+			transition: color 0.7s;
+		}
+
+		.btn:hover {
+			background-color: #353637;
+			color: #808080;
+			transition: background-color 0.7s;
+			transition: color 0.7s;
+		}
+
+		h1 {
+			font-size: 0.7vw;
+			color: white;
+		}
+
+		body {
+			background: #323232;
+		}
+
+		button {
+			font-size: 0.7vw;
+			width: 9vw;
+		}
+
+		#editor {
+			position: absolute;
+			top: 0vh;
+			right: 0;
+			bottom: 0;
+			left: 20vw;
+		}
+
+		.sidebar {
+			width: 19.5vw;
+		}
+    .blank {
+      visibility: hidden;
+    }
+	</style>
+</head>
+
+<body>
+
+	<div class="sidebar">
+
+		<h1>
+			Script editor; <br>
+            Only use this if you know what you're doing.
+            I'm not responsible for your stupidity. <br>
+            Everything is written in JavaScript.
+            I would strongly suggest you read the defaults and
+            write your code based off of them.
+        </h1>
+
+        <h1>Load</h1>
+
+        <button type="button" class="btn" onclick="doShit(1, 0)">load cookies (upload)</button>
+        <button type="button" class="btn" onclick="doShit(1, 1)")>load cookies (download)</button>
+        <br>
+        <button type="button" class="btn" onclick="doShit('load_database', 'upload')">load database (upload)</button>
+        <button type="button" class="btn" onclick="doShit('load_database', 'download')">load database (download)</button>
+
+        <br>
+
+        <h1>Save</h1>
+
+        <button type="button" class="btn" onclick="doShit(0, 0)">save cookies (upload)</button>
+        <button type="button" class="btn" onclick="doShit(0, 1)">save cookies (download)</button>
+        <br>
+        <button type="button" class="btn" onclick="doShit('save_database', 'upload')">save database (upload)</button>
+        <button type="button" class="btn" onclick="doShit('save_database', 'download')">save database (download)</button>
+
+        <br>
+
+        <h1>Defaults</h1>
+
+        <button type="button" class="btn" onclick="doShit(4, 0)">load default (upload)</button>
+        <button type="button" class="btn" onclick="doShit(4, 1)">load default (download)</button>
+
+        <br>
+
+        <h1>Set active</h1>
+
+        <button type="button" class="btn">set active (upload)</button>
+        <button type="button" class="btn">set active (download)</button>
+
+    </div>
+
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+
+    <div id="editor">
+    // Welcome to the achat script editor!
+
+    /*
+
+      Everything here is written in JavaScript.
+      If you're unsure of what you're doing, I would suggest you don't edit anything!
+
+      Some topics I'd suggest you study -
+      ... basic computer science - so you can read or edit code
+      ... basic JavaScript syntax - so you can read and write JS code
+      ... achat's custom function usages - so you know how your functions fit in
+
+      If you're all good on that, you can dive right in! On the left - hand side bar,
+      there's several options. Loading and saving can be done with these buttons.
+
+      In general, you should load from default and save to cookies. "Set active" will set 
+      your active editor to be your active script.
+
+      Why don't you get started started by clicking "load default (upload)"?
+
+      *** IMPORTANT NOTE***
+      All comments MUST be written with the " /* " format. If you use the other type,
+      evaluating statements becomes impossible and your scripts will not work. 
+
+      Brief documentation (scripts)
+      ... upload(message) is the function you invoke to upload a message.
+      ... You should NEVER use function(), scripts are called on run
+
+    */
+
+// Most simple upload function....
+var message = $("#chatbox").val();
+upload(message);
+
+// Printing functions are more challenging to understand and write,
+// I would suggest you spend a long time playing around with the default one.
+    </div>
+<div class="blank" id="upload">/* Default upload function
+   This function takes place from where the client's
+   built in command checker ends.
+   Modified June 13th */
+   
+var message = $("#chatbox").val().replace(/(\r\n|\n|\r)/gm, "");
+
+switch (message) 
+{
+    
+    case ",muteall":
+        {
+            
+            if (Cookies.get("globalMute") == "true")
+            {
+                
+                Cookies.set("globalMute", "false"); 
+                
+            }
+            else if (Cookies.get("globalMute") == "false")
+            {
+                
+                Cookies.set("globalMute", "true");  
+                
+            }
+            else
+            {
+                
+                Cookies.set("globalMute", "true");   
+                
+            }
+            
+            printSystemMessage("Toggled global mute. Global mute is currently: " 
+                + Cookies.get("globalMute"));
+            break;   
+            
+        }
+        
+    case ",clearchat":
+        {
+            
+            $("#divc").html("");
+            printSystemMessage("Cleared chat.");
+            
+            break;   
+            
+        }
+        
+    default:
+        {
+            
+            if (message.includes("/b/"))
+            {
+                
+                message = "<strong>" + message.replace("/b/", "") + "</strong>"; 
+                
+            }
+            else if (message.includes("/i/")) 
+            {
+                
+                message = "<i>" + message.replace("/i/", "") + "</i>"; 
+                
+            }
+            else if (message.includes("/bi/"))
+            {
+                
+                message = "<strong><i>" + message.replace("/bi/", "") + "</i></strong>"; 
+                
+            }
+            
+            upload(message);
+            
+            break;
+            
+        }
+        
+}</div>
+<div class="blank" id="download">
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.4/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="script/editor.js"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/idle_fingers");
+        editor.session.setMode("ace/mode/javascript");
+        editor.setOptions({
+          fontFamily: 'Inconsolata',
+          fontSize: "20pt",
+          cursorStyle: "wide",
+          animatedScroll: true
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+</body>
+
+</html>

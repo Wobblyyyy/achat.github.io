@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>homepage</title>
+    <link href="css/homepage.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>options</h1>
+      <h2>user options</h2>
+        <p>profile picture</p>
+        <p>change username</p>
+      <h2>idk what else lmao</h2>
+        <p>filler stuff so i can pretend i'm cool</p>
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js"></script> <script> var config = { apiKey: "AIzaSyDkIPxli9HepurbKlBRLvsipoZpiN1e9ds", authDomain: "skielines-992a0.firebaseapp.com", databaseURL: "https://skielines-992a0.firebaseio.com", projectId: "skielines-992a0", storageBucket: "skielines-992a0.appspot.com", messagingSenderId: "270260186833" }; firebase.initializeApp(config); </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="script/new_homepage.js"></script>
+  </body>
+</html>
+
+<!--
+var message = $("#chatbox").val().replace(/(\r\n|\n|\r)/gm, "");
+if (message.charAt(0) == "~")
+{
+    message = message.replace("~", "");
+    eval (message);
+}
+switch (message) 
+{
+    case ",muteall":
+            if (Cookies.get("globalMute") == "true")
+                Cookies.set("globalMute", "false");
+            else if (Cookies.get("globalMute") == "false")
+                Cookies.set("globalMute", "true");
+            else
+                Cookies.set("globalMute", "true");
+            printSystemMessage("Toggled global mute. Global mute is currently: " 
+                + Cookies.get("globalMute"));
+            break;
+    case ",clearchat":
+            $("#divc").html("");
+            printSystemMessage("Cleared chat.");   
+            break;
+    default:
+            if (message.includes("/b/"))
+                message = "<strong>" + message.replace("/b/", "") + "</strong>";
+            else if (message.includes("/i/")) 
+                message = "<i>" + message.replace("/i/", "") + "</i>";
+            else if (message.includes("/bi/"))
+                message = "<strong><i>" + message.replace("/bi/", "") + "</i></strong>";
+            upload(message);
+            break;
+}
+-->

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>register</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <ul class="nav">
+      <li><a href="/a_ch_at/auth/login.html">log in</a></li>
+      <li><a href="/a_ch_at/auth/register.html">register</a></li>
+      <li><a href="/a_ch_at/auth/logout.html">log out</a></li>
+    </ul>
+
+    <div id="registerContainer">
+        <form>
+            <label for="username">email:</label>
+            <input type="text" id="email">
+
+            <label for="username">username:</label>
+            <input type="text" id="username">
+
+            <label for="password">password:</label>
+            <input type="password" id="password1">
+
+            <label for="password">repeat password:</label>
+            <input type="password" id="password2">
+
+            <div id="lower">
+                <input type="checkbox"><label class="check" for="checkbox">a_ch_at</label>
+                <button type="button" class="gamer" onclick="checkUsername()">register</button>
+            </div><!--/ lower-->
+        </form>
+    </div>
+
+    <script src="sha256.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js"></script> <script> var config = { apiKey: "AIzaSyDkIPxli9HepurbKlBRLvsipoZpiN1e9ds", authDomain: "skielines-992a0.firebaseapp.com", databaseURL: "https://skielines-992a0.firebaseio.com", projectId: "skielines-992a0", storageBucket: "skielines-992a0.appspot.com", messagingSenderId: "270260186833" }; firebase.initializeApp(config); </script>
+    <script>
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        window.location.href = "../homepage.html";
+      }
+    });
+
+      var database = firebase.database();
+
+      function checkUsername() {
+        firebase.database().ref('users').once('value', function(snapshot) {
+          if (snapshot.hasChild(document.getElementById("username").value)) {
+            // username already exists n i b b a
+            alert('username already taken');
+          } else {
+            // good to go have fun
+            createNewAccount();
+          }
+        });
+      }
+
+      function writeUserData() {
+        var email = document.getElementById("email").value;
+        var username = document.getElementById("username").value;
+        var password1 = document.getElementById("password1").value;
+        var password2 = document.getElementById("password2").value;
+
+        email = email.replace("@", "nobodywilleverusethesewords");
+        email = email.replace(".", "evenfewerpeoplewillusethesewords");
+
+        firebase.database().ref('email-to-name/' + email).set({
+          username: username
+        });
+        firebase.database().ref('name-to-email/' + username).set({
+          email: email
+        });
+        return firebase.database().ref('users/count').once('value').then(function(snapshot) {
+          console.log(snapshot.val());
+          var nextId = snapshot.val() + 1;
+          console.log(nextId);
+          firebase.database().ref('users/count').set(nextId);
+          firebase.database().ref('users/' + username).set({
+            id: nextId,
+            color: 6
+          })
+        }); // hey how's it going
+      }
+
+      function createNewAccount(){
+        var email = document.getElementById("email").value;
+        var username = document.getElementById("username").value;
+        var password1 = document.getElementById("password1").value;
+        var password2 = document.getElementById("password2").value;
+        // create new account function here
+        // first input the values we'll need later for private messages
+        // next we'll do the fuckin firebase auth shit
+        // okay that's it i'll stop commenting now
+
+        if (password1 == password2) {
+
+          // create custom user shit
+
+          writeUserData();
+
+          // do firebase stuff now that we're done
+          password1 = sha256(password1); // sha256 the password for coolness
+          firebase.auth().createUserWithEmailAndPassword(email, password1).catch(function(error) { // firebase shit that should work
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorCode, errorMessage);
+          });
+
+          setTimeout(function(){
+            firebase.database().ref('uid-to-name/' + firebase.auth().currentUser.uid).set ({
+              username: username
+            });
+          }, 1500);
+
+
+        }
+      }
+    </script>
+  </body>
+</html>

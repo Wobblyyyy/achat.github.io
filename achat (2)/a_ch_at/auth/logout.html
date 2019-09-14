@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>redirecting</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" 
+      type="image/png" 
+      href="../../favicon-96x96.png">
+  </head>
+  <body onload="checkOrigin()">
+
+    <ul class="nav">
+      <li><a href="/a_ch_at/auth/login.html">log in</a></li>
+      <li><a href="/a_ch_at/auth/register.html">register</a></li>
+      <li><a href="/a_ch_at/auth/logout.html">log out</a></li>
+    </ul>
+
+    <button type="button" onclick="logTheFuckOut()">log out</button>
+    <button class="hidden" id="return" type="button" onclick="returnToHomepage()">return to homepage</button>
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js"></script> <script> var config = { apiKey: "AIzaSyDkIPxli9HepurbKlBRLvsipoZpiN1e9ds", authDomain: "skielines-992a0.firebaseapp.com", databaseURL: "https://skielines-992a0.firebaseio.com", projectId: "skielines-992a0", storageBucket: "skielines-992a0.appspot.com", messagingSenderId: "270260186833" }; firebase.initializeApp(config); </script>
+    <script>
+      function checkOrigin() {
+        var origin = new URL(window.location.href).searchParams.get("o");
+        if (origin == "homepage") {
+          document.getElementById("return").style.display = "block";
+        }
+      }
+      function logTheFuckOut(){
+        firebase.auth().signOut().then(function() {
+          alert("you signed out yay");
+          window.location.href = "../index.html";
+        }).catch(function(error) {
+          alert("what the fuck just happened lmao");
+        });
+      }
+      function returnToHomepage() {
+        window.location.href = "../homepage.html";
+      }
+    </script>
+  </body>
+</html>

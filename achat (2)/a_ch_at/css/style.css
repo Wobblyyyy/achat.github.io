@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+.noPadding {
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+}
+.blank {
+      visibility: hidden;
+    }
+body {
+  /*
+  padding-right: 5vw;
+  padding-left: 5vw;
+  padding-bottom: 5vh;
+  */
+  font-family: 'Raleway', sans-serif;
+  /*background-color: #757575;*/
+  background-color: white;
+}
+.clearBg {
+  background-color: transparent;
+}
+div.a {
+  width: 0vw;
+  height: 0vh;
+  /*background-color: black;*/
+}
+.pleaseWork {
+  width: 100vw;
+  height: 75vh;
+}
+div.b {
+  flex: 1;
+  /*background-color: blue;*/
+  display: flex;
+  flex-direction: column;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+div.c {
+  scroll-behavior: smooth;
+  height: 90vh;
+  /*background-color: white;*/
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 82vw;
+  /*scrollbar-width: none;*/
+}
+div.d {
+  height: 10vh;
+  width: 87vw;
+  /*background-color: red;*/
+}
+.onlineList {
+  position: absolute;
+  height: 100vh;
+  width: 18vw;
+  margin-left: 82vw;
+  border: none;
+  outline: none;
+}
+html, body {
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  display: flex;
+}
+div.newText {
+  font-family: 'Roboto', sans-serif;
+}
+.container {
+  margin-left: 10vw;
+  opacity: 0.5;
+  /*
+  border: 2px solid black;
+  background-color: #616161;
+  */
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  /*height: 100px;*/
+  width: 83vw;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap; /* Firefox */    
+  white-space: -pre-wrap;     /* Opera <7 */   
+  white-space: -o-pre-wrap;   /* Opera 7 */    
+  word-wrap: break-word;      /* IE */
+  transition: opacity 2s ease-in;
+}
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+  
+}
+/* Style time text */
+.time-right {
+  /*float: right;*/
+  color: gray;
+  font-size: small;
+  margin-left: 7px;
+}
+.encryption {
+  color: gray;
+  font-size: x-small;
+  margin-left: 3px;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+.chatboxBackground {
+  width: 83vw;
+  height: 6vh;
+  margin-left: 1vw;
+  margin-top: 0.5vh;
+  background-color: white;
+  border-radius: 15px;
+  opacity: 0.7;
+}
+.chatbox {
+  margin-left: 1.5vw;
+  margin-top: 0.5vw;
+  width: 80vw;
+  height: 5vh;
+  background-color: transparent;
+}
+textarea:focus {
+  outline: none;
+}
+textarea {
+  border: 0px solid;
+  font-family: 'Raleway', sans-serif;
+  font-size: large;
+}
+.userUsername {
+  font-weight: bold;
+  font-size: large;
+  color: #aaa;
+}
+.darker {
+  /*
+  border-color: black;
+  background-color: #424242;
+  */
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 15vw;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 110%;
+
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+  visibility: visible;
+}
+
+.blueName {
+  color: blue;
+  font-weight: bold;
+}
+.redName {
+  color: red;
+  font-weight: bold;
+}
+.orangeName {
+  color: orange;
+  font-weight: bold;
+}
+.purpleName {
+  color: purple;
+  font-weight: bold;
+}
+.greenName {
+  color: green;
+  font-weight: bold;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #616161;
+  opacity: 1; /* Firefox */
+}
+.messageClass {
+  color: black;
+}
+.nav{
+    border:1px solid #ccc;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+}
+.nav li{
+    display:inline;
+}
+.nav a{
+    display:inline-block;
+    padding:10px;
+}
+
+.textBlue {
+  color: blue;
+}
+.textRed {
+  color: red;
+}
+.textOrange {
+  color: orange;
+}
+.textYellow {
+  color: yellow;
+}
+.textPurple {
+  color: purple;
+}
+.textBlack {
+  color: black;
+}
+.textWhite {
+  color: white;
+}
+.textBold {
+  font-weight: 900;
+}
+.textGray {
+  color: darkgray;
+}
+.textItalic {
+  font-style: italic;
+}
+canvas {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>login</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" 
+      type="image/png" 
+      href="../../favicon-96x96.png">
+  </head>
+  <body>
+    
+    <ul class="nav">
+      <li><a href="/a_ch_at/auth/login.html">log in</a></li>
+      <li><a href="/a_ch_at/auth/register.html">register</a></li>
+      <li><a href="/a_ch_at/auth/logout.html">log out</a></li>
+    </ul>
+
+    <div id="container">
+        <form>
+            <label for="username">username or email:</label>
+            <input type="text" id="username">
+            <label for="password">password:</label>
+            <input type="password" id="password">
+            <div id="lower">
+                <input type="checkbox"><label class="check" for="checkbox">a_ch_at</label>
+                <button type="button" class="gamer" onclick="logTheFuckIn()">login</button>
+            </div><!--/ lower-->
+        </form>
+    </div><!--/ container-->
+    <!--
+    <div class="topnav">
+      <a href="login.html">login</a>
+      <a href="register.html">register</a>
+      <a href="logout.html">logout</a>
+    </div>
+    <input type="text" id="username" placeholder="email or username"> <br>
+    <input type="password" id="password" placeholder="password"> <br>
+    <button type="button" onclick="logTheFuckIn()">log in</button>
+    -->
+    <script src="sha256.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js"></script> <script> var config = { apiKey: "AIzaSyDkIPxli9HepurbKlBRLvsipoZpiN1e9ds", authDomain: "skielines-992a0.firebaseapp.com", databaseURL: "https://skielines-992a0.firebaseio.com", projectId: "skielines-992a0", storageBucket: "skielines-992a0.appspot.com", messagingSenderId: "270260186833" }; firebase.initializeApp(config); </script>
+    <script>
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log("auth state changed");
+    if (user) {
+      console.log("if user");
+    firebase.database().ref('uid-to-name/' + firebase.auth().currentUser.uid + '/username').once('value', (snapshot) => {
+      console.log(snapshot.val());
+      currentUsername = snapshot.val();
+    
+    
+    firebase.database().ref('users/' + currentUsername + '/id').once('value', (snapshot) => {
+      console.log(snapshot.val());
+      currentUserTag = snapshot.val();
+    //});});
+    firebase.database().ref('users/' + currentUsername + '/color').once('value', (snapshot) => {
+      nameColor = snapshot.val();
+    });
+    });});
+    } else {}});
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        window.location.href = "../homepage.html";
+      }
+    });
+      function logTheFuckIn(){
+
+        var email = document.getElementById("username").value;
+        var password = sha256(document.getElementById("password").value);
+
+        // first we need to see if the user is using an email or a username
+        if (email.includes("@")) {
+          // in this case, the user is using an email, so no conversions needed.
+        } else {
+          // here the user is using a username so we need to do shit
+          // just read user-to-email for that username and see what we get
+          return firebase.database().ref('name-to-email/' + email + "/email").once('value').then(function(snapshot) {
+            console.log(snapshot.val());
+            email = snapshot.val();
+            email = email.replace("nobodywilleverusethesewords", "@");
+            email = email.replace("evenfewerpeoplewillusethesewords", ".");
+
+            console.log(email);
+
+            firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+              // actually logged in, redirect to homepage
+             window.location.href = "../homepage.html";
+            }).catch(function(error) {
+              // didn't log in, tell the user they're a complete fucking idiot
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              alert(errorCode, errorMessage);
+            });
+                // ...
+              }); // hey how's it going
+        }
+
+        firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+          // actually logged in, redirect to homepage
+          window.location.href = "../homepage.html";
+        }).catch(function(error) {
+          // didn't log in, tell the user they're a complete fucking idiot
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert(errorCode, errorMessage);
+        });
+      }
+    </script>  
+  </body>
+</html>

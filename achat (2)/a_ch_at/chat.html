@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>a_ch_at</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<style>
+		@keyframes white {
+			from {
+				transform: none;
+				opacity: 0;
+			}
+			to {
+				transform: scale(0.5);
+				opacity: 1;
+			}
+		}
+
+		@keyframes dots {
+			0% {
+				top: 0vh;
+				left: 0vh;
+			}
+			25% {
+				top: 0vh;
+				left: 20vh;
+			}
+			50% {
+				top: 20vh;
+				left: 20vh;
+			}
+			75% {
+				top: 20vh;
+				left: 0%;
+			}
+			100% {
+				top: 0vh;
+				left: 0vh;
+			}
+		}
+
+		.dot {
+			height: 10vh;
+			width: 10vh;
+			background-color: black;
+			border-radius: 50%;
+			position: absolute;
+			animation-name: dots;
+			animation-iteration-count: infinite;
+			animation-duration: 3s;
+		}
+
+		.dot1 {
+			animation-delay: -1s;
+		}
+
+		.dot2 {
+			animation-delay: -2s;
+		}
+
+		.dot3 {
+			animation-delay: -3s;
+		}
+
+		#loader {
+			display: none;
+			height: 40vh;
+			width: 40vh;
+			position: absolute;
+			top: 50vh;
+			left: 50vw;
+			margin-top: -20vh;
+			margin-left: -20vh;
+		}
+
+		.main {
+			display: none;
+		}
+
+		#motd {
+			display: none;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+
+	</script>
+
+  <script>
+    var _0x4b00=["\x3B\x2C\x6E\x6A\x33\x46\x52\x53\x7B\x5A\x57\x7B\x60\x5E\x45\x67\x6E\x32\x56\x65\x28\x44\x2A\x41\x32\x60\x3D\x4C\x52\x24\x47\x3F\x33\x6B\x58\x34\x40\x7E\x77\x55\x67\x2E\x75\x62\x3E\x34\x39\x4C\x3E\x32\x65\x76\x38\x4C\x79\x60\x60\x5E\x78\x58\x42\x4B\x59\x6E\x2A\x25\x48\x6A\x2B\x47\x67\x23\x73\x41\x5D\x29\x60\x78\x74\x2E\x2B\x66\x2E\x63\x7A\x70\x29\x4A\x24\x78\x42\x74\x52\x4C\x3A\x50\x7B\x2A\x67\x79\x78\x7A\x64\x79\x5F\x3D\x63\x42\x28\x0A\x7B\x78\x70\x3A\x5A\x72\x2B\x59\x38\x3D\x44\x6A\x21\x39\x53\x5A\x29","\x65\x6E\x63\x72\x79\x70\x74","\x41\x45\x53","\x64\x65\x63\x72\x79\x70\x74","\x65\x6E\x63"];var encjs={encrypt:function(_0xa1b0x2){var _0xa1b0x3=CryptoJS[_0x4b00[2]][_0x4b00[1]](_0xa1b0x2,_0x4b00[0]);return _0xa1b0x3},decrypt:function(_0xa1b0x2){var _0xa1b0x3=CryptoJS[_0x4b00[2]][_0x4b00[3]](_0xa1b0x2,_0x4b00[0]);_0xa1b0x3= _0xa1b0x3.toString(CryptoJS[_0x4b00[4]].Utf8);return _0xa1b0x3}}
+    </script>
+
+</head>
+
+
+
+
+<body class="noPadding" id="body">
+
+	<div class="loader">
+		<div class="dot1 dot">
+			<div class="dot1 dot"></div>
+			<div class="dot2 dot"></div>
+			<div class="dot3 dot"></div>
+		</div>
+		<div class="dot2 dot">
+			<div class="dot1 dot"></div>
+			<div class="dot2 dot"></div>
+			<div class="dot3 dot"></div>
+		</div>
+		<div class="dot3 dot">
+			<div class="dot1 dot"></div>
+			<div class="dot2 dot"></div>
+			<div class="dot3 dot"></div>
+		</div>
+		<h3 style="margin-top:60vh;">loading...</h3>
+		<h3 style="color:gray;" id="motd"></h3>
+	</div>
+
+	<div class="main">
+
+		<div class="a" id="diva"></div>
+		<div class="b" id="divb">
+
+			<iframe id="onlineListObject" class="onlineList" src="online.html"></iframe>
+			<div class="c" id="divc"></div>
+
+			<div class="d" id="divd">
+
+				<div class="chatboxBackground">
+
+					<textarea id="chatbox" class="chatbox" placeholder="begin typing a message... or not..."></textarea>
+          
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!--
+    <canvas id='canvas' data-processing-sources='script/pro.java' style='z-index:-1;'></canvas>
+    -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js"></script> <script> var config = { apiKey: "AIzaSyDkIPxli9HepurbKlBRLvsipoZpiN1e9ds", authDomain: "skielines-992a0.firebaseapp.com", databaseURL: "https://skielines-992a0.firebaseio.com", projectId: "skielines-992a0", storageBucket: "skielines-992a0.appspot.com", messagingSenderId: "270260186833" }; firebase.initializeApp(config); </script>
+    <script src="https://wobblyyyy.github.io/achat.github.io/new_chat.js"></script>
+    <script src="script/splash.js"></script>
+    <script>
+      document.getElementById("motd").innerHTML = "while you wait, why don't you go pet a dog?<br>injest cyanide?<br><b>replace your sister's insulin with heroin?"
+      $(".loader").fadeIn(250);
+      $("#motd").fadeIn(750);
+      setTimeout(function()
+      {
+        $(".loader").fadeOut(750);
+      }, 1750);
+      setTimeout(function() 
+      {
+        $(".main").fadeIn(1000);
+      }, 2500);
+      setTimeout(function()
+      {
+        $(".loader").remove();
+      }, 3000);
+      document.getElementById("motd").innerHTML = splashList[Math.floor(Math.random() * 27)];
+    </script>
+
+  </body>
+
+
+</html>

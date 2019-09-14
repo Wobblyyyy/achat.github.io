@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<title>a_ch_at</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+
+</script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/png" href="../../favicon-96x96.png">
+<style>
+	@keyframes white {
+		from {
+			transform: none;
+			opacity: 0;
+		}
+		to {
+			transform: scale(0.5);
+			opacity: 1;
+		}
+	}
+
+	@keyframes dots {
+		0% {
+			top: 0vh;
+			left: 0vh;
+		}
+		25% {
+			top: 0vh;
+			left: 20vh;
+		}
+		50% {
+			top: 20vh;
+			left: 20vh;
+		}
+		75% {
+			top: 20vh;
+			left: 0%;
+		}
+		100% {
+			top: 0vh;
+			left: 0vh;
+		}
+	}
+
+	.dot {
+		height: 10vh;
+		width: 10vh;
+		background-color: black;
+		border-radius: 50%;
+		position: absolute;
+		animation-name: dots;
+		animation-iteration-count: infinite;
+		animation-duration: 3s;
+	}
+
+	.dot1 {
+		animation-delay: -1s;
+	}
+
+	.dot2 {
+		animation-delay: -2s;
+	}
+
+	.dot3 {
+		animation-delay: -3s;
+	}
+
+	#loader {
+    display: none;
+		height: 40vh;
+		width: 40vh;
+		position: absolute;
+		top: 50vh;
+		left: 50vw;
+		margin-top: -20vh;
+		margin-left: -20vh;
+	}
+</style>
+<style>
+	body,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: "Raleway", sans-serif
+	}
+
+	body,
+	html {
+		height: 100%;
+		line-height: 1.8;
+		scroll-behavior: smooth;
+		/* filter: blur(2px); */
+	}
+
+	body,
+	html {
+		height: 100%;
+		line-height: 1.8;
+		scroll-behavior: smooth;
+		/* filter: blur(2px); */
+	}
+
+	#main
+  {
+    height: 100vh;
+    width: 100vw;
+    display: none;
+  }
+
+	/* Full height image header */
+
+	.bgimg-1 {
+		background-position: center;
+		background-size: cover;
+		background-image: url("index2.jpg");
+		min-height: 100%;
+	}
+
+	.w3-bar .w3-button {
+		padding: 16px;
+	}
+</style>
+
+<body>
+  <div id="main">
+
+	<!-- Navbar (sit on top) -->
+	<div class="w3-top">
+		<div class="w3-bar w3-white w3-card" id="myNavbar">
+			<button id="homebtn" class="w3-bar-item w3-button w3-wide">home</button>
+            <!-- Right-sided navbar links -->
+            <div class="w3-right w3-hide-small">
+                <a onclick="setTimeout(function(){ window.location.href='../index.html#about'; }, 2000);" class="w3-bar-item w3-button"><i class="fa fa-question-circle"></i> about</a>
+                <a onclick="setTimeout(function(){ window.location.href='../index.html#development'; }, 2000);" class="w3-bar-item w3-button"><i class="fa fa-wrench"></i> development</a>
+                <a id="signin" onclick="setTimeout(function(){ window.location.href='login2.html'; }, 2000);" class="w3-bar-item w3-button"><i class="fa fa-sign-in"></i> signin</a>
+                <a id="signup" onclick="setTimeout(function(){ window.location.href='register2.html'; }, 2000);" class="w3-bar-item w3-button"><i class="fa fa-user-plus"></i> signup</a>
+                <a onclick="setTimeout(function(){ window.location.href='../index.html#contact'; }, 2000);" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> feedback</a>
+            </div>
+            <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Sidebar on small screens when clicking the menu icon -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+        <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
+        <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
+        <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
+        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    </nav>
+
+    <!-- Header with full-height image -->
+    <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+        <div class="w3-display-left w3-text-white" style="padding:48px">
+            <span class="w3-jumbo w3-hide-small">a_ch_at <i class="fa fa-comment"></i> log in to an existing account</span>
+            <br>
+            <span class="w3-xxlarge w3-hide-large w3-hide-medium">a_ch_at <i class="fa fa-comment"> log in to an existing account</i></span>
+            <br>
+            <span class="w3-large">please sign up im lonely</span>
+            <p>
+                <!--<a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">learn more</a>
+       <button id="signup" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">create an account</button> <p>-->
+                    <input id="username" placeholder="username" style="width:25vw;" type="text" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">
+                    <p>
+                        <input id="password" placeholder="password" style="width:25vw;" type="password" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">
+                        <p>
+                                <button id="signup" style="width:25vw;" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" onclick="logTheFuckIn()">submit</button>
+        </div>
+        <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+        </div>
+    </header>
+    </div>
+
+    <script>
+$("#main").fadeIn(500);
+      
+        $("#signin").click(function() {
+            $("#main").fadeOut(500);
+            $("#loader").fadeIn(500);
+            setTimeout(function(){ $("#loader").fadeOut(500); }, 1000);
+        });
+        $("#signup").click(function() {
+            $("#main").fadeOut(1000);
+            $("#loader").fadeIn(500);
+            setTimeout(function(){ $("#loader").fadeOut(500); }, 1000);
+        });
+
+        $("#homebtn").click(function() {
+          $("#main").fadeOut(1000);
+          $("#loader").fadeIn(500);
+            setTimeout(function(){ $("#loader").fadeOut(500); }, 1000);
+          setTimeout(function(){ window.location.href = "../index.html"; }, 2000);
+        });
+        $(".w3-button").on("click", function(event)
+        {
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+        });
+    </script>
+    <script src="sha256.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.1/firebase.js"></script> <script> var config = { apiKey: "AIzaSyDkIPxli9HepurbKlBRLvsipoZpiN1e9ds", authDomain: "skielines-992a0.firebaseapp.com", databaseURL: "https://skielines-992a0.firebaseio.com", projectId: "skielines-992a0", storageBucket: "skielines-992a0.appspot.com", messagingSenderId: "270260186833" }; firebase.initializeApp(config); </script>
+    <script>
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log("auth state changed");
+    if (user) {
+      console.log("if user");
+    firebase.database().ref('uid-to-name/' + firebase.auth().currentUser.uid + '/username').once('value', (snapshot) => {
+      console.log(snapshot.val());
+      currentUsername = snapshot.val();
+    
+    
+    firebase.database().ref('users/' + currentUsername + '/id').once('value', (snapshot) => {
+      console.log(snapshot.val());
+      currentUserTag = snapshot.val();
+    //});});
+    firebase.database().ref('users/' + currentUsername + '/color').once('value', (snapshot) => {
+      nameColor = snapshot.val();
+    });
+    });});
+    } else {}});
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        $("#main").fadeOut(1000);
+          $("#loader").fadeIn(500);
+            setTimeout(function(){ $("#loader").fadeOut(500); }, 1000);
+          setTimeout(function(){ window.location.href = "../homepage.html"; }, 2000);
+      }
+    });
+      function logTheFuckIn(){
+
+        var email = document.getElementById("username").value;
+        var password = sha256(document.getElementById("password").value);
+
+        // first we need to see if the user is using an email or a username
+        if (email.includes("@")) {
+          // in this case, the user is using an email, so no conversions needed.
+        } else {
+          // here the user is using a username so we need to do shit
+          // just read user-to-email for that username and see what we get
+          return firebase.database().ref('name-to-email/' + email + "/email").once('value').then(function(snapshot) {
+            console.log(snapshot.val());
+            email = snapshot.val();
+            email = email.replace("nobodywilleverusethesewords", "@");
+            email = email.replace("evenfewerpeoplewillusethesewords", ".");
+
+            console.log(email);
+
+            firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+              // actually logged in, redirect to homepage
+             window.location.href = "../homepage.html";
+            }).catch(function(error) {
+              // didn't log in, tell the user they're a complete fucking idiot
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              alert(errorCode, errorMessage);
+              alert("holy shit! you total fucking moron\n" +
+                    "how did you even get here? you fucking imbecile!\n" +
+                    "do you even have a brain? a fucking four year old could do better!" +
+                    "im not even dissapointed, im just confused as to how someone" +
+                    "could possible be this fucking stupid.");
+            });
+                // ...
+              }); // hey how's it going
+        }
+
+        firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+          // actually logged in, redirect to homepage
+          window.location.href = "../homepage.html";
+        }).catch(function(error) {
+          // didn't log in, tell the user they're a complete fucking idiot
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert(errorCode, errorMessage);
+        });
+      }
+
+      !function(){try{var o=console;Object.defineProperty(window,"console",{get:function(){if(o._commandLineAPI)throw"Sorry, for security reasons, the script console is deactivated on netflix.com";return o},set:function(e){o=e}})}catch(o){}}();
+    </script>
+</body>
+
+
+      <div id="loader">
+      <div class="dot1 dot">
+      <div class="dot1 dot"></div>
+      <div class="dot2 dot"></div>
+      <div class="dot3 dot"></div>
+      </div>
+      <div class="dot2 dot">
+      <div class="dot1 dot"></div>
+      <div class="dot2 dot"></div>
+      <div class="dot3 dot"></div>
+      </div>
+      <div class="dot3 dot">
+      <div class="dot1 dot"></div>
+      <div class="dot2 dot"></div>
+      <div class="dot3 dot"></div>
+      </div>
+      </div>
+
+
+</html>
