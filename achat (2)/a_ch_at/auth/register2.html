@@ -207,8 +207,6 @@
             var password1 = document.getElementById("password1").value;
             var password2 = document.getElementById("password2").value;
 
-            firebase.database().ref("master/users/" + username + "/global").set("member");
-
             // create new account function here
             // first input the values we'll need later for private messages
             // next we'll do the fuckin firebase auth shit
